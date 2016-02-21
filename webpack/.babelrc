@@ -1,0 +1,19 @@
+{
+  "presets": ["es2015-node5", "stage-0", "react"],
+  "plugins": ["add-module-exports", "transform-decorators-legacy", "typecheck"],
+  "env": {
+    "development": {
+      "plugins": [
+        ["react-transform", {
+          "transforms": [{
+            "transform": "react-transform-catch-errors",
+            "imports": [
+              "react",
+              "redbox-react"
+            ]
+          }]
+        }]
+      ]
+    }
+  }
+}

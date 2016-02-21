@@ -1,0 +1,42 @@
+/**
+ *  Define scss variables here.
+ *
+ *  Available options for Bootstrap:
+ *  http://getbootstrap.com/customize/
+ *
+ */
+
+
+// Default palette
+$gray05: darken(white, 5%);
+$gray15: darken(white, 15%);
+$gray25: darken(white, 25%);
+$gray50: darken(white, 50%);
+$gray75: darken(white, 75%);
+
+// Pomo colors
+$darkRed: #8e2800;
+$red: #b64926;
+$orange: #ffb03b;
+$yellow: #fff0a5;
+$green: #468966;
+
+
+// boostrap colors
+$brand-primary: $red;
+$brand-secondary: $green;
+$brand-success: $green;
+$brand-warning: $orange;
+$brand-danger: $darkRed;
+$brand-info: $yellow;
+
+$brand-pi-25: mix($brand-info, $brand-primary, 25%);
+$brand-pi-50: mix($brand-info, $brand-primary, 50%);
+
+$border-radius-base: 0.5em;
+
+$text-color: #333;
+
+$font-size-base: 14px;
+$font-family-sans-serif: "Helvetica Neue", Helvetica, sans-serif;
+$link-hover-decoration: none;
