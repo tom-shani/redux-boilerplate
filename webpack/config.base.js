@@ -3,7 +3,6 @@ import path from 'path';
 import CleanPlugin from 'clean-webpack-plugin';
 const relativeAssetsPath = 'assets/build';
 const assetsPath = path.join(__dirname, '../', relativeAssetsPath);
-const nodeModulesPath = path.join(__dirname, '../node_modules');
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
@@ -16,7 +15,7 @@ export default {
 
   module: {
     loaders: [
-      {exclude: nodeModulesPath, test: /\.json$/, loader: 'json-loader'},
+      {exclude: /node_modules/, test: /\.json$/, loader: 'json-loader'},
       {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
@@ -27,16 +26,13 @@ export default {
   },
   output: {
     path: assetsPath,
-    chunkFilename: '[name]-[chunkhash].js',
+    chunkFilename: '[name]-[chunkhash].js'
   },
 
   progress: true,
 
   resolve: {
-    modulesDirectories: [
-      'src',
-      'node_modules'
-    ],
+    modulesDirectories: ['src', 'node_modules'],
     extensions: ['', '.json', '.js', '.jsx']
   },
 
@@ -48,9 +44,5 @@ export default {
     })
   ],
 
-  postcss: () => {
-    return [
-      autoprefixer({browsers: ['last 2 versions']})
-    ];
-  }
+  postcss: () => [autoprefixer({browsers: ['last 2 versions']})]
 };

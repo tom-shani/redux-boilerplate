@@ -12,7 +12,7 @@ const dest = document.getElementById('content');
 const history = createHistory();
 // const history = useScroll(createHistory)();
 history.__v2_compatible__ = true;
-const store = createStore(history, window.__data);
+const store = createStore(window.__data);
 
 const component = (
   <Router history={history}>

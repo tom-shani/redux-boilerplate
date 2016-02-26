@@ -1,11 +1,8 @@
 import {createStore as _createStore, applyMiddleware, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import {syncHistory} from 'react-router-redux';
 
-export default function createStore(history, data = {}) {
-  const router = syncHistory(history);
+export default function createStore(data = {}) {
   const middleware = [
-    router,
     thunkMiddleware
   ];
 
@@ -28,8 +25,6 @@ export default function createStore(history, data = {}) {
   const store = finalCreateStore(reducer, data);
 
   if (__DEVELOPMENT__) {
-    router.listenForReplays(store);
-
     if (module.hot) {
       module.hot.accept('./reducer', () => {
         store.replaceReducer(require('./reducer'));

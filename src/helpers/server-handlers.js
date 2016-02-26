@@ -29,7 +29,7 @@ export function renderHandler(req, res) {
     webpackIsomorphicTools.refresh();
   }
   const history = createHistory();
-  const store = createStore(history);
+  const store = createStore();
 
   function hydrateOnClient() {
     res.send('<!doctype html>\n' + // eslint-disable-line prefer-template

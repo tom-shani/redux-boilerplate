@@ -6,6 +6,9 @@ import webpack from 'webpack';
 import webpackIsomorphicTools from './webpack-isomorphic-tools';
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
 
+const host = process.env.HOST || 'localhost';
+const apihost = process.env.APIHOST || 'localhost';
+
 const webpackConfigProduction = mergeConfig(baseConfig, {
   devtool: 'source-map',
   entry: {
@@ -24,7 +27,7 @@ const webpackConfigProduction = mergeConfig(baseConfig, {
           'style',
           'css?modules&importLoaders=1&sourceMap&localIdentName=[name]__[local]__[hash:base64:5]' +
           '!postcss'
-        ),
+        )
       },
       {
         test: /\.scss$/,
@@ -34,7 +37,7 @@ const webpackConfigProduction = mergeConfig(baseConfig, {
           'css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]__[hash:base64:5]' +
           'postcss?sourceMap' +
           'sass?sourceMap=true&sourceMapContents=true'
-        ),
+        )
       },
       {
         test: /\.scss$/,
@@ -45,7 +48,7 @@ const webpackConfigProduction = mergeConfig(baseConfig, {
           'css' +
           '!sass?sourceMap' +
           '!postcss-loader?sourceMap'
-        ),
+        )
       }
     ]
   },
@@ -58,7 +61,11 @@ const webpackConfigProduction = mergeConfig(baseConfig, {
   plugins: [
     new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}), // css files from the extract-text-plugin loader
     new webpack.DefinePlugin({
-      'process.env': {NODE_ENV: JSON.stringify('production')},
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+        HOST: JSON.stringify(host),
+        APIHOST: JSON.stringify(apihost)
+      },
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: false,
@@ -71,9 +78,7 @@ const webpackConfigProduction = mergeConfig(baseConfig, {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
+      compress: {warnings: false}
     }),
 
     new WebpackIsomorphicToolsPlugin(webpackIsomorphicTools)

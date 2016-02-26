@@ -12,17 +12,12 @@ const serverOptions = {
   contentBase: `http://${host}:${port}`,
   quiet: true,
   noInfo: true,
-  headers: {
-    'Access-Control-Allow-Origin': '*'
-  },
+  headers: {'Access-Control-Allow-Origin': '*'},
   hot: true,
   inline: true,
-  // lazy: true,
   publicPath: webpackConfig.output.publicPath,
   stats: {colors: true},
-  watchOptions: {
-    aggregateTimeout: 100,
-  }
+  watchOptions: {aggregateTimeout: 100}
 };
 
 const app = new Express();
@@ -30,7 +25,8 @@ const app = new Express();
 app.use(webpackDevMiddleware(compiler, serverOptions));
 app.use(webpackHotMiddleware(compiler));
 
-app.listen(port, function onAppListening(err) {
+/* eslint-disable no-console */
+app.listen(port, (err) => {
   if (err) {
     console.error(err);
   } else {

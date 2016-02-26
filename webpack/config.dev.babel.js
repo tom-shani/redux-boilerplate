@@ -7,6 +7,7 @@ import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(webpackIsomorphicTools);
 
 const host = process.env.HOST || 'localhost';
+const apihost = process.env.APIHOST || 'localhost';
 const port = parseInt(process.env.PORT, 10) + 1 || 3001;
 
 const webpackConfigDevelopment = mergeConfig(baseConfig, {
@@ -28,8 +29,8 @@ const webpackConfigDevelopment = mergeConfig(baseConfig, {
         loaders: [
           'style',
           'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
-          'postcss',
-        ],
+          'postcss'
+        ]
       },
       {
         test: /\.scss$/,
@@ -38,8 +39,8 @@ const webpackConfigDevelopment = mergeConfig(baseConfig, {
           'style',
           'css?modules&importLoaders=2&localIdentName=[name]__[local]__[hash:base64:5]',
           'postcss',
-          'sass',
-        ],
+          'sass'
+        ]
       },
       {
         test: /\.scss$/,
@@ -50,7 +51,7 @@ const webpackConfigDevelopment = mergeConfig(baseConfig, {
           'css',
           'sass',
           'postcss-loader'
-        ],
+        ]
       }
     ]
   },
@@ -65,6 +66,11 @@ const webpackConfigDevelopment = mergeConfig(baseConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.IgnorePlugin(/webpack-stats\.json$/),
     new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+        HOST: JSON.stringify(host),
+        APIHOST: JSON.stringify(apihost)
+      },
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: true,
