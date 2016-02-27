@@ -1,6 +1,6 @@
 {
   "name": "redux-boilerplate",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Basic Hot-Loading, Universal Redux boilerplate",
   "main": "bin/server.js",
   "devDependencies": {

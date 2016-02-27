@@ -1,3 +1,4 @@
+import {app} from '../../config';
 import createReducer from '../create-reducer.js';
 import {Record} from 'immutable';
 
@@ -12,7 +13,7 @@ const RouteRecord = new Record({
   }
 });
 
-const prefix = 'redux-boilerplate';
+const prefix = app.title;
 export const INIT_LOCATION = `${prefix}/INIT_LOCATION`;
 export const UPDATE_LOCATION = `${prefix}/UPDATE_LOCATION`;
 
