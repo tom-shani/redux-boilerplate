@@ -1,5 +1,5 @@
-import React from 'react';
-import Helmet from 'react-helmet';
+import React from 'react'
+import Helmet from 'react-helmet'
 
 export default function NotFound() {
   return (
@@ -8,5 +8,5 @@ export default function NotFound() {
       <h1>404 - Page Not Found</h1>
       <p>These are not the droids you are looking for.</p>
     </div>
-  );
+  )
 }

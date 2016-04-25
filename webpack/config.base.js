@@ -1,12 +1,11 @@
-import autoprefixer from 'autoprefixer';
-import path from 'path';
-import CleanPlugin from 'clean-webpack-plugin';
-const relativeAssetsPath = 'assets/build';
-const assetsPath = path.join(__dirname, '../', relativeAssetsPath);
+import autoprefixer from 'autoprefixer'
+import path from 'path'
+import CleanPlugin from 'clean-webpack-plugin'
+const buildPath = path.join(__dirname, '../static/build')
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
-import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
-const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
+import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin'
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
 
 export default {
   historyApiFallback: true,
@@ -15,7 +14,7 @@ export default {
 
   module: {
     loaders: [
-      {exclude: /node_modules/, test: /\.json$/, loader: 'json-loader'},
+      {test: /\.json$/, loader: 'json-loader'},
       {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
@@ -25,7 +24,7 @@ export default {
     ]
   },
   output: {
-    path: assetsPath,
+    path: buildPath,
     chunkFilename: '[name]-[chunkhash].js'
   },
 
@@ -37,7 +36,11 @@ export default {
   },
 
   plugins: [
-    new CleanPlugin([relativeAssetsPath], {
+    new CleanPlugin([
+      'static/build',
+      'sitemap.xml',
+      'robots.txt'
+    ], {
       root: path.join(__dirname, '..'),
       verbose: true,
       dry: false
@@ -45,4 +48,4 @@ export default {
   ],
 
   postcss: () => [autoprefixer({browsers: ['last 2 versions']})]
-};
+}

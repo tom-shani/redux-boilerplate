@@ -1,16 +1,17 @@
-import baseConfig from './config.base';
-import mergeConfig from 'webpack-merge';
-import path from 'path';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import webpack from 'webpack';
-import webpackIsomorphicTools from './webpack-isomorphic-tools';
-import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
+import baseConfig from './config.base'
+import mergeConfig from 'webpack-merge'
+import path from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import PurifyCSSPlugin from 'purifycss-webpack-plugin'
+import webpack from 'webpack'
+import webpackIsomorphicTools from './webpack-isomorphic-tools'
+import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin'
 
-const host = process.env.HOST || 'localhost';
-const apihost = process.env.APIHOST || 'localhost';
+const host = process.env.HOST || 'localhost'
+const apihost = process.env.APIHOST || 'localhost'
 
 const webpackConfigProduction = mergeConfig(baseConfig, {
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   entry: {
     main: [
       'bootstrap-loader/extractStyles',
@@ -59,8 +60,15 @@ const webpackConfigProduction = mergeConfig(baseConfig, {
   },
 
   plugins: [
-    new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}), // css files from the extract-text-plugin loader
-    new webpack.DefinePlugin({
+    new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),
+    new PurifyCSSPlugin({
+      basePath: __dirname,
+      paths: [
+        '../src/*.js'
+      ]
+    }),
+    new webpack.IgnorePlugin(/\.\/dev/, /\/config$/), // ignore dev config
+    new webpack.DefinePlugin({ // set global vars
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
         HOST: JSON.stringify(host),
@@ -72,17 +80,17 @@ const webpackConfigProduction = mergeConfig(baseConfig, {
       __DEVTOOLS__: false
     }),
 
-    new webpack.IgnorePlugin(/\.\/dev/, /\/config$/), // ignore dev config
-
     // optimizations
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false}
+      compress: {
+        warnings: false
+      }
     }),
 
     new WebpackIsomorphicToolsPlugin(webpackIsomorphicTools)
   ]
-});
+})
 
-export default webpackConfigProduction;
+export default webpackConfigProduction

@@ -1,9 +1,9 @@
 /**
  *  Define js versions of scss variables here.
  */
-import Color from 'color';
+import Color from 'color'
 /* eslint-disable new-cap */
-const white = Color('white');
+const white = Color('white')
 
 const defaultPallete = {
   gray05: white.darken(0.05).hexString(),
@@ -11,7 +11,7 @@ const defaultPallete = {
   gray25: white.darken(0.25).hexString(),
   gray50: white.darken(0.5).hexString(),
   gray75: white.darken(0.75).hexString()
-};
+}
 
 const pomoColors = {
   darkRed: '#8e2800',
@@ -19,7 +19,7 @@ const pomoColors = {
   orange: '#ffb03b',
   yellow: '#fff0a5',
   green: '#468966'
-};
+}
 
 const bootstrapColors = {
   brandPrimary: pomoColors.red,
@@ -28,12 +28,12 @@ const bootstrapColors = {
   brandWarning: pomoColors.orange,
   brandDanger: pomoColors.darkRed,
   brandInfo: pomoColors.yellow
-};
+}
 
 const bootstrapExtraColors = {
   brandPi25: Color(bootstrapColors.brandPrimary).mix(Color(bootstrapColors.brandInfo), 0.25),
   brandPi50: Color(bootstrapColors.brandPrimary).mix(Color(bootstrapColors.brandInfo), 0.50)
-};
+}
 
 export default {
   palette: {
@@ -42,4 +42,4 @@ export default {
     ...bootstrapColors,
     ...bootstrapExtraColors
   }
-};
+}

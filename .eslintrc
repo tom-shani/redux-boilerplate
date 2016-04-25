@@ -1,8 +1,4 @@
 {
-  "ecmaFeatures": {
-    "modules": true,
-    "jsx": true
-  },
   "env": {
     "browser": true,
     "node": true
@@ -14,20 +10,16 @@
     "__SERVER__": true,
     "__DISABLE_SSR__": true,
     "__DEVTOOLS__": true,
-    "socket": true,
+    "Promise": true,
     "webpackIsomorphicTools": true
   },
   "parser": "babel-eslint",
-  "plugins": ["babel", "react"],
+  "plugins": ["react", "import"],
   "rules": {
-    "import/default": 0,
-    "import/no-duplicates": 0,
-    "import/named": 0,
-    "import/namespace": 0,
-    "import/no-unresolved": 0,
-    "import/no-named-as-default": 0
+    "no-param-reassign": 0
   },
   "settings": {
+    "import/parser": "babel-eslint",
     "import/resolve": {
       moduleDirectory: ["node_modules", "src"]
     }

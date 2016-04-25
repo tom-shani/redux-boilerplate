@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import Helmet from 'react-helmet';
-import {app} from '../../config';
+import React, {Component} from 'react'
+import Helmet from 'react-helmet'
+import {app} from '../../config'
 
 export default class Home extends Component {
   render() {
@@ -9,6 +9,6 @@ export default class Home extends Component {
         <Helmet title={app.description} />
         <p>Be it ever so humble.</p>
       </div>
-    );
+    )
   }
 }

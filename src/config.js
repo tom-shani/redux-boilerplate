@@ -1,4 +1,4 @@
-import {name, version} from '../package.json';
+import {name, version} from '../package.json'
 
 const environment = {
   development: {
@@ -7,7 +7,7 @@ const environment = {
   production: {
     isProduction: true
   }
-}[process.env.NODE_ENV || 'development'];
+}[process.env.NODE_ENV || 'development']
 
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
@@ -32,4 +32,4 @@ module.exports = Object.assign({
       ]
     }
   }
-}, environment);
+}, environment)

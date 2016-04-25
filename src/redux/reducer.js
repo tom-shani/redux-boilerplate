@@ -1,9 +1,9 @@
-import {combineReducers} from 'redux';
+import {combineReducers} from 'redux'
 
-import error from './modules/error/reducer';
-import router from './modules/router';
+import error from './modules/error/reducer'
+import routing from './modules/routing'
 
 export default combineReducers({
   error,
-  router
-});
+  routing
+})

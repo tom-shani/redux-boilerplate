@@ -1,7 +1,5 @@
-import {Record} from 'immutable';
+import {Record} from 'immutable'
 
-const ErrorRecord = new Record({
+export const ErrorRecord = new Record({
   err: null
-});
-
-export default ErrorRecord;
+})

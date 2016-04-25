@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import Helmet from 'react-helmet';
+import React, {Component} from 'react'
+import Helmet from 'react-helmet'
 
 export default class SamplePage extends Component {
   render() {
@@ -9,6 +9,6 @@ export default class SamplePage extends Component {
         <h1>Sample Page</h1>
         <p>Hello, Dolly.</p>
       </div>
-    );
+    )
   }
 }

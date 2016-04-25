@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* eslint-disable */
-require('../server.babel'); // babel registration (runtime transpilation for node)
+require('../transpile'); // babel registration (runtime transpilation for node)
 var path = require('path');
 var rootDir = path.resolve(__dirname, '..');
 /**
