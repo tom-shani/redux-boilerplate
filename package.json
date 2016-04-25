@@ -1,6 +1,6 @@
 {
   "name": "redux-boilerplate",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Basic Hot-Loading, Universal Redux boilerplate",
   "main": "bin/server.js",
   "devDependencies": {
@@ -144,9 +144,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/pomo-io/pomo.design.git"
+    "url": "git+https://github.com/tom-shani/redux-boilerplate.git"
   },
   "author": "Tom Adam Shani <tom@tomshani.com>",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/pomo-io/pomo.design#readme"
+  "homepage": "https://github.com/tom-shani/redux-boilerplate#readme"
 }

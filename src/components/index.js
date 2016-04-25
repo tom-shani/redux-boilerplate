@@ -1,7 +1,3 @@
-import Error from './error/error'
-import Header from './header/header'
-
-export default {
-  Error,
-  Header
-}
+/* eslint-disable object-curly-spacing */
+export Error from './error/error'
+export Header from './header/header'

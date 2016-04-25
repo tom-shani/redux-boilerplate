@@ -4,7 +4,7 @@ import {routerMiddleware} from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk'
 
 import {ErrorRecord} from './modules/error/schema'
-import {RoutingRecord} from './modules/routing'
+import {RoutingRecord} from './modules/routing/schema'
 
 function convertDataToImmutable(data) {
   return {
